@@ -6,7 +6,7 @@ by AstroVoid24!
 	
 Latest Version:
 
-  --1.1.0V -- Changed from press enter to continue to press any key to continue and fixed some bugs
+  --1.0.2V -- Changed from press enter to continue to press any key to continue and fixed some bugs
 
 ```diff
 - IMPORTANT!:
