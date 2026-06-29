@@ -8,10 +8,11 @@ Latest Version:
 
   --1.1.0V -- Changed from press enter to continue to press any key to continue and fixed some bugs
 
-IMPORTANT!
+```diff
+- IMPORTANT!:
 
  Installation required! Go to your terminal and paste this code: `pip3 install readchar` and wait until it installs!
-	
+```
 Description:
 	
  This tool is very cool and usefull if you want to comminucate with other people with secret language!
