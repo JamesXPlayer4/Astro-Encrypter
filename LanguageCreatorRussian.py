@@ -1,10 +1,13 @@
 import os
+import readchar
 import time
+import sys
 
 home_folder = os.path.expanduser("~")
 file_path = home_folder + "/Desktop/custom-lang-rus.astro"
 
 while True:
+    print("\n" * 100)
     print("""
     Добро пожаловать в: 
     🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
@@ -14,7 +17,7 @@ while True:
     🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
 
     СОЗДАТЕЛЬ СЕКРЕТНОГО ЯЗЫКА
-    \033[0mОт \033[95mAstroVoid24""")
+     \033[0mОт \033[95mAstroVoid24""")
 
     choice1 = input("""\033[0mЧто вы хотите сделать?
         ПОЛЬЗОВАТЕЛЬСКИЙ ЯЗЫК → Русский - \"1\"
@@ -28,28 +31,30 @@ while True:
         print(f"""Инструкция:
         Введите символ вашего языка, а затем русскую букву
         и нажмите Enter для перехода к следующей букве.
-        Пример: &а *Нажал Enter*
-                 %б *Нажал Enter*
-        Требуется 50 пары, но в алфавите всего 33 букв?
+        Пример: &а *Нажать Enter*
+                 %б *Нажать Enter*
+        Требуется 50 пар, но в алфавите всего 33 буквы?
         Верно, но есть и другие важные символы, а главное – ЦИФРЫ!
         Дополнительные символы: 1234567890,.=+-%?
         Не используйте \\q, это сломает программу.
         Рекомендуется вводить русские буквы по алфавиту, затем цифры, затем остальные символы.
         Чтобы отправить язык другу, передайте ему файл \"custom-lang-rus.astro\" с рабочего стола,
         он должен поместить его на свой рабочий стол.""")
+
         for LineLetter in range(50):   # 33 буквы + 10 цифр + 7 знаков = 50
             pair = input(f"Доп. символы: 1234567890,.=+-%? | Пара {LineLetter + 1}:")
             FullLanguage.append(pair)
+
         with open(file_path, "w") as f:
             for pair in FullLanguage:
                 f.write(pair + "\n")
+
         with open(file_path, "r") as file:
             Review = file.read()
-            print("Всё готово!\nНажмите Enter, чтобы вернуться в главное меню\nПроверьте свой перевод!:")
+            print("Всё готово!\nПроверьте свой перевод!:")
             time.sleep(1)
-        ReviewInputWait = input(f"{Review}")
-        if ReviewInputWait == ReviewInputWait:
-            pass
+            print(Review + "\nНажмите любую клавишу для продолжения")
+            key = readchar.readkey()
 
     if choice1 == "4":
         # Автоматическое создание русского языка (50 пар)
@@ -104,8 +109,8 @@ N+
 O-
 P%
 Q?""")
-        print("Готово! (задержка 1 сек.)")
-        time.sleep(1)
+        print("Готово! Нажмите любую клавишу для продолжения")
+        key = readchar.readkey()
 
     elif choice1 == "2":
         # Русский → Пользовательский язык
@@ -113,7 +118,7 @@ Q?""")
         with open(file_path, "r") as f:
             for line in f:
                 line = line.strip()
-                if line:
+                if line:  # пропускаем пустые строки
                     symbol = line[:-1]
                     letter = line[-1]
                     Translation[letter] = symbol
@@ -124,12 +129,11 @@ Q?""")
             if char in Translation:
                 result += Translation[char]
             else:
-                print("Не буду переводить! Не смог найти одну из букв, попробуйте писать строчными буквами, хорошо? Я не буду продолжать,\nпотому что если я продолжу, вы сможете прочитать всё целиком, просто без одного или двое букв и\nя не знаю, кто в этом компьютере!")
+                print("Не буду переводить! Не смог найти одну из букв, попробуйте писать строчными буквами, хорошо? Я не буду продолжать,\nпотому что если я продолжу, вы сможете прочитать всё целиком, просто без одного или двух букв и\nя не знаю, кто за этим компьютером!")
                 result = ""
                 break
-        WaitTranslation1 = input(f"{FromRussian} -> {result}\nНажмите Enter для возврата в меню")
-        if WaitTranslation1 == WaitTranslation1:
-            pass
+        print(f"{FromRussian} -> {result}\nНажмите любую клавишу для продолжения")
+        key = readchar.readkey()
 
     elif choice1 == "1":
         # Пользовательский язык → Русский
@@ -137,7 +141,7 @@ Q?""")
         with open(file_path, "r") as f:
             for line in f:
                 line = line.strip()
-                if line:
+                if line:  # пропускаем пустые строки
                     symbol = line[:-1]
                     letter = line[-1]
                     TranslationToRus[symbol] = letter
@@ -148,12 +152,11 @@ Q?""")
             if char in TranslationToRus:
                 result += TranslationToRus[char]
             else:
-                print("Не буду переводить! Не смог найти одну из букв, попробуйте писать строчными буквами, хорошо? Я не буду продолжать,\nпотому что если я продолжу, вы сможете прочитать всё целиком, просто без одного или двое букв и\nя не знаю, кто в этом компьютере!")
+                print("Не буду переводить! Не смог найти одну из букв, попробуйте писать строчными буквами, хорошо? Я не буду продолжать,\nпотому что если я продолжу, вы сможете прочитать всё целиком, просто без одного или двух букв и\nя не знаю, кто за этим компьютером!")
                 result = ""
                 break
-        WaitTranslation2 = input(f"{ToRussian} -> {result}\nНажмите Enter для возврата в меню")
-        if WaitTranslation2 == WaitTranslation2:
-            pass
+        print(f"{ToRussian} -> {result}\nНажмите любую клавишу для продолжения")
+        key = readchar.readkey()
 
     else:
         print(f"Неправильно написано: {choice1}\n2-секундная пауза")

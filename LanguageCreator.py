@@ -1,9 +1,11 @@
 import os
+import readchar
 import time
 import sys
 home_folder = os.path.expanduser("~")
 file_path = home_folder + "/Desktop/custom-lang.astro"
 while True:
+    print("\n" * 100)
     print("""
     Welcome to the: 
     🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩
@@ -42,11 +44,10 @@ while True:
                     f.write(pair + "\n")
             with open(file_path, "r") as file:
                 Review = file.read()
-                print("Everything is done!\nJust hit enter to go to the main menu\nReview your translation!:")
+                print("Everything is done!\nReview your translation!:")
                 time.sleep(1)
-            ReviewInputWait = input(f"{Review}")
-            if ReviewInputWait == ReviewInputWait:
-                pass
+                print(Review + "\n Press any key to continue")
+                key = readchar.readkey()
     if choice1 == "4":
         with open(file_path, "w") as f:
                 f.write("""!a
@@ -92,8 +93,8 @@ N+
 O-
 P%
 Z?""")
-        print("Done! (1sec delay)")
-        time.sleep(1)
+        print("Done! Press any key to continue")
+        key = readchar.readkey()
     elif choice1 == "2":
         Translation = {}
         with open(file_path, "r") as f:
@@ -113,9 +114,8 @@ Z?""")
                 print("Won't translate! Couldn't find one of the letters, try to write lowercase letters ok? I won't continue becuz if i continue,\nyou could read the whole thing just without 1 letter or 2 and\nI don't know who is in this compyter!")
                 result = ""
                 break
-        WaitTranslation1 = input(f"{FromEnglish} -> {result}\nJust hit enter to go to the main menu")
-        if WaitTranslation1 == WaitTranslation1:
-            pass
+        print(f"{FromEnglish} -> {result}\nPress any key to continue")
+        key = readchar.readkey()
     elif choice1 == "1":
         TranslationToEng = {}
         with open(file_path, "r") as f:
@@ -136,9 +136,8 @@ Z?""")
                 print("Won't translate! Couldn't find one of the letters, try to write lowercase letters ok? I won't continue becuz if i continue,\nyou could read the whole thing just without 1 letter or 2 and\nI don't know who is in this compyter!")
                 result = ""
                 break
-        WaitTranslation2 = input(f"{ToEnglish} -> {result}\nJust hit enter to go to the main menu")
-        if WaitTranslation2 == WaitTranslation2:
-            pass
+        print(f"{ToEnglish} -> {result}\nPress any key to continue")
+        key = readchar.readkey()
     else:
         print(f"Typo: {choice1}\n2 Second pause")
         time.sleep(2)
