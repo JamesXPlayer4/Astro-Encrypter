@@ -6,9 +6,12 @@ by AstroVoid24!
 	
 Latest Version:
 
-  --1.0.1 -- Added Translation Blocker, if the letter/symbol wasn't found, it blocks and translate to a blank text, because if only one letter is missing, 
-  the whole text will be visible, and that little update enchances the safety
+  --1.1.0V -- Changed from press enter to continue to press any key to continue and fixed some bugs
 
+IMPORTANT!
+
+ Installation required! Go to your terminal and paste this code: `pip3 install readchar` and wait until it installs!
+	
 Description:
 	
  This tool is very cool and usefull if you want to comminucate with other people with secret language!
